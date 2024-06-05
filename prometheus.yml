@@ -1,0 +1,53 @@
+# Prometheus Configuration
+
+# Global Configuration
+global:
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager Configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - "3.91.159.235:9093" # Alertmanager endpoint (Change the IP Address Here)
+
+# Rule Files
+rule_files:
+  - "alert_rules.yml" # Path to alert rules file
+  # - # Additional rule files can be included here
+
+# Prometheus Itself Configuration
+scrape_configs:
+  - job_name: "prometheus" # Job name for Prometheus
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+      - targets: ["localhost:9090"] # Target to scrape (Prometheus itself)
+
+  # Node Exporter Configuration
+  - job_name: "node_exporter" # Job name for node exporter
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+      - targets:
+          - "34.224.212.172:9100" # Target node exporter endpoint (Change the IP Address Here)
+
+  # Blackbox Exporter Configuration
+  - job_name: 'blackbox' # Job name for blackbox exporter
+    metrics_path: /probe # Path for blackbox probe
+    params:
+      module: [http_2xx] # Module to look for HTTP 200 response
+    static_configs:
+      - targets:
+          - http://prometheus.io # HTTP target
+          - https://prometheus.io # HTTPS target
+          - http://34.224.212.172:8080/ # HTTP target with port 8080 (Change the IP Address Here)
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 3.91.159.235:9115 # Blackbox exporter address (Change the IP Address Here)
