@@ -1,14 +1,10 @@
-Certainly! Below is a clean, structured documentation on how to install and configure Prometheus and Grafana on Ubuntu 22.04 LTS, along with the necessary steps to visualize metrics with Grafana.
-
----
-
-# **Prometheus and Grafana Installation Guide on Ubuntu 22.04 LTS**
+# **Prometheus and Grafana Installation Guide on Ubuntu**
 
 ## **Introduction**
-This guide provides instructions to install **Prometheus** (a powerful open-source monitoring and alerting toolkit) and **Grafana** (a visualization platform) on Ubuntu 22.04 LTS. We will also cover how to set up Node Exporter for gathering system metrics and how to configure Grafana to visualize data from Prometheus.
+This guide provides instructions to install **Prometheus** (a powerful open-source monitoring and alerting toolkit) and **Grafana** (a visualization platform) on Ubuntu . We will also cover how to set up Node Exporter for gathering system metrics and how to configure Grafana to visualize data from Prometheus.
 
 ### **Prerequisites**
-- A server running **Ubuntu 22.04 LTS**
+- A server running **Ubuntu **
 - Root or **sudo** privileges
 - Open ports: `9090` (Prometheus), `3000` (Grafana), `9100` (Node Exporter)
 
@@ -277,13 +273,9 @@ This guide provides instructions to install **Prometheus** (a powerful open-sour
 ---
 
 ## **Conclusion**
-You have successfully installed Prometheus, Grafana, and Node Exporter on Ubuntu 22.04 LTS. You can now use Grafana to visualize metrics from Prometheus and monitor your system's performance using Node Exporter.
+You have successfully installed Prometheus, Grafana, and Node Exporter on Ubuntu . You can now use Grafana to visualize metrics from Prometheus and monitor your system's performance using Node Exporter.
 
 ### **Further Enhancements**
 - Set up alerts in Prometheus to notify you of system issues.
 - Create more detailed Grafana dashboards using additional Prometheus metrics.
 - Customize the Prometheus `prometheus.yml` file to scrape other services and resources.
-
----
-
-Let me know if you'd like any specific modifications to this documentation!
